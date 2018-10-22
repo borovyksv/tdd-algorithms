@@ -27,6 +27,7 @@ public abstract class MultiClassSortTest {
         return Arrays.asList(parameterInstances);
     }
 
+    @SuppressWarnings("deprecated")
     private static Object[] getSortable(Class<? extends Sortable> c) {
         try {
             return new Object[]{c.getSimpleName(), c.newInstance()};
