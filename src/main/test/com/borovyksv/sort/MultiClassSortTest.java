@@ -8,6 +8,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Set;
 
+import static org.junit.Assert.assertTrue;
+
 @RunWith(Parameterized.class)
 public abstract class MultiClassSortTest {
 
@@ -36,4 +38,10 @@ public abstract class MultiClassSortTest {
         }
     }
 
+    void assertNaturalOrder(int[] integers) {
+        for (int i = 0; i < integers.length - 1; i++) {
+            assertTrue(integers[i] + " should be lower than " + integers[i + 1],
+                    integers[i] < integers[i + 1]);
+        }
+    }
 }

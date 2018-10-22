@@ -69,11 +69,4 @@ public class SortTest extends MultiClassSortTest {
         assertNaturalOrder(integers);
     }
 
-
-    private void assertNaturalOrder(int[] integers) {
-        for (int i = 0; i < integers.length - 1; i++) {
-            assertTrue(integers[i] + " should be lower than " + integers[i + 1],
-                    integers[i] < integers[i + 1]);
-        }
-    }
 }
