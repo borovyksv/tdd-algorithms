@@ -1,7 +1,9 @@
 package com.borovyksv.sort.bubble;
 
 import com.borovyksv.sort.Sortable;
+import org.junit.Ignore;
 
+@Ignore
 public class RecursiveBubbleSort implements Sortable {
 
     @Override

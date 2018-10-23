@@ -1,5 +1,6 @@
 package com.borovyksv.sort;
 
+import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.reflections.Reflections;
@@ -24,6 +25,7 @@ public abstract class MultiClassSortTest {
         Reflections reflections = new Reflections("com");
         Set<Class<? extends Sortable>> sortableImplementations = reflections.getSubTypesOf(Sortable.class);
         Object[][] parameterInstances = sortableImplementations.stream()
+                .filter(c -> !c.isAnnotationPresent(Ignore.class))
                 .map(MultiClassSortTest::getSortable)
                 .toArray(Object[][]::new);
         return Arrays.asList(parameterInstances);

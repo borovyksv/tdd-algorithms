@@ -1,9 +1,9 @@
 package com.borovyksv.sort.insertion;
 
 import com.borovyksv.sort.Sortable;
+import org.junit.Ignore;
 
-import java.util.Arrays;
-
+@Ignore
 public class RecursiveInsertionSort implements Sortable {
 
     @Override
