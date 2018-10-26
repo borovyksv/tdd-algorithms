@@ -11,7 +11,12 @@ public abstract class Producer extends Thread {
     @Override
     public void run() {
         IntStream.range(0, NUM_OF_ELEMENTS)
+                .peek(this::log)
                 .forEach(this::produce);
+    }
+    private void log(int element) {
+        System.out.println(this.getClass().getSimpleName().substring("producer".length())
+                + " produced element: " + element);
     }
 
     protected abstract void produce(int element);

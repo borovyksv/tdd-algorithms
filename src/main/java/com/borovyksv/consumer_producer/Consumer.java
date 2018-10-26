@@ -14,11 +14,18 @@ public abstract class Consumer extends Thread {
     public void run() {
         sleep();
         while (results.size() != Producer.NUM_OF_ELEMENTS) {
-            consume();
+            int element = consume();
+            log(element);
+            results.add(element);
         }
     }
 
-    protected abstract void consume();
+    protected abstract Integer consume();
+
+    private void log(Integer element) {
+        System.out.println(this.getClass().getSimpleName().substring("consumer".length())
+                + " consumed element: " + element);
+    }
 
     public void setBuffer(Queue<Integer> buffer) {
         this.buffer = buffer;
