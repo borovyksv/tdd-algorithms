@@ -12,12 +12,7 @@ public class ProducerBlockingQueue extends Producer {
 
     @Override
     protected void produce(int element) {
-        log(element);
         putElementToBuffer(element);
-    }
-
-    private void log(int element) {
-        System.out.println("BlockingQueue producing element: " + element);
     }
 
     private void putElementToBuffer(int element) {

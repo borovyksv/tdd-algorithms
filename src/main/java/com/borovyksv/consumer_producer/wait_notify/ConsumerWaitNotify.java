@@ -5,12 +5,18 @@ import com.borovyksv.consumer_producer.Consumer;
 public class ConsumerWaitNotify extends Consumer {
 
     @Override
-    protected void consume() {
+    protected Integer consume() {
         waitIfBufferIsEmpty();
+        return takeElementFromBuffer();
+    }
+
+    private Integer takeElementFromBuffer() {
+        Integer element;
         synchronized (buffer) {
-            consumeFromBuffer();
+            element = buffer.poll();
             buffer.notifyAll();
         }
+        return element;
     }
 
     private void waitIfBufferIsEmpty() {
@@ -24,12 +30,6 @@ public class ConsumerWaitNotify extends Consumer {
                 }
             }
         }
-    }
-
-    private void consumeFromBuffer() {
-        Integer element = buffer.poll();
-        System.out.println("WaitNotify consumed element: " + element);
-        results.add(element);
     }
 
 }

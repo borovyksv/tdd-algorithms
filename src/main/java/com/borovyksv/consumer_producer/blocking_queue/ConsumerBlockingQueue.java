@@ -7,14 +7,8 @@ import java.util.concurrent.BlockingQueue;
 public class ConsumerBlockingQueue extends Consumer {
 
     @Override
-    protected void consume() {
-        Integer element = takeElementFromBuffer();
-        log(element);
-        results.add(element);
-    }
-
-    private void log(Integer element) {
-        System.out.println("BlockingQueue consumed element: " + element);
+    protected Integer consume() {
+        return takeElementFromBuffer();
     }
 
     private Integer takeElementFromBuffer() {

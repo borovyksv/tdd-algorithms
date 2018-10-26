@@ -12,8 +12,12 @@ public class ProducerWaitNotify extends Producer {
     @Override
     protected void produce(int element) {
         waitIfBufferIsFull();
+        addElementToBuffer(element);
+    }
+
+    private void addElementToBuffer(int element) {
         synchronized (buffer) {
-            addToBuffer(element);
+            buffer.add(element);
             buffer.notifyAll();
         }
     }
@@ -29,10 +33,5 @@ public class ProducerWaitNotify extends Producer {
                 }
             }
         }
-    }
-
-    private void addToBuffer(int element) {
-        System.out.println("WaitNotify producing element: " + element);
-        buffer.add(element);
     }
 }
